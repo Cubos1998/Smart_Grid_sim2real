@@ -31,34 +31,36 @@ echo "Starting experiments for Smart Grids..."
 #########################################
 
 # (i) Degree-based experiments: for varieties that use a degree (e.g., s, c, d, v)
-for lin_src in 1; do
-  for variety in v; do
-    for degree in 0.2 0.5 0.8 1.0; do
-      for noise in 0.0 0.2; do
-        for bias in 0.5; do
-          for noise_cfrs in 0.0 0.2; do
-            for use_denoiser in 0 1; do
-              echo "-----------------------------------------------------"
-              echo "Running one-house (degree): broken=0, lin_src=${lin_src}, variety=${variety}, degree=${degree}, noise=${noise}"
-              python3 train_darc_SmartGrids.py \
-                --save_file_name ${SAVE_FILE_NAME} \
-                --env-name ${ENV_NAME} \
-                --broken 0 \
-                --lin_src ${lin_src} \
-                --variety-name ${variety} \
-                --degree ${degree} \
-                --noise ${noise} \
-                --lr ${LR} \
-                --train-steps ${TRAIN_STEPS} \
-                --max-steps ${MAX_STEPS} \
-                --bs ${BS} \
-                --update ${UPDATE} \
-                --deltar ${DELTAR} \
-                --save-model ${SAVE_MODEL} \
-                --seed ${SEED} \
-                --bias ${bias} \
-                --noise_cfrs ${noise_cfrs} \
-                --use_denoiser ${use_denoiser}
+for seed in 197 127 595 53 241 8 99 674; do
+  for lin_src in 1; do
+    for variety in v; do
+      for degree in 0.5 0.65 0.8; do
+        for noise in 0.2; do
+          for bias in 0.5; do
+            for noise_cfrs in 0.0; do
+              for use_denoiser in 0 1; do
+                echo "-----------------------------------------------------"
+                echo "Running one-house (degree): broken=0, lin_src=${lin_src}, variety=${variety}, degree=${degree}, noise=${noise}"
+                python3 train_darc_SmartGrids.py \
+                  --save_file_name ${SAVE_FILE_NAME} \
+                  --env-name ${ENV_NAME} \
+                  --broken 0 \
+                  --lin_src ${lin_src} \
+                  --variety-name ${variety} \
+                  --degree ${degree} \
+                  --noise ${noise} \
+                  --lr ${LR} \
+                  --train-steps ${TRAIN_STEPS} \
+                  --max-steps ${MAX_STEPS} \
+                  --bs ${BS} \
+                  --update ${UPDATE} \
+                  --deltar ${DELTAR} \
+                  --save-model ${SAVE_MODEL} \
+                  --seed ${seed} \
+                  --bias ${bias} \
+                  --noise_cfrs ${noise_cfrs} \
+                  --use_denoiser ${use_denoiser}
+              done
             done
           done
         done
