@@ -21,7 +21,7 @@ if not algos:
     raise SystemExit("All algorithms excluded – nothing to do.")
 
 # ───────────────────────── settings ───────────────────────────────
-folder_path   = "/home/cubos98/Desktop/MA/DARAIL/runs/runs_Total"
+folder_path   = "/home/cubides/MA/DARAIL_cp/runs/runs_Total"
 drop_first_k  = 0                             
 base_regex    = re.compile(
     r"(?=.*noise_cfrs_0\.0)(?=.*noise_0\.2)(?=.*bias_0\.5)",

@@ -3,3 +3,4 @@ runs
 logs
 .venv
 saved_weights
+venv
